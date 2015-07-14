@@ -1,0 +1,20 @@
+{
+  "name": "SWTestServer",
+  "version": "0.0.1",
+  "description": "SW Test pico server",
+  "main": "swserver.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AntonioMA/swtestserver.git"
+  },
+  "author": "Antonio M. Amaya",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AntonioMA/swtestserver/issues"
+  },
+  "homepage": "https://github.com/AntonioMA/swtestserver/",
+  "devDependencies": {
+    "promise": "~7.0.0",
+    "mime-types": "~2.0.0"
+  }
+}
