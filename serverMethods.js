@@ -44,8 +44,8 @@ function ServerMethods() {
   }
 
   var VALID_HEADERS = [
-      'Content-Security-Policy',
-      'Content-Security-Policy-Report-Only'
+      'content-security-policy',
+      'content-security-policy-report-rnly'
   ];
   function addHeaders(aRes, additionalHeaders) {
     if (typeof additionalHeaders === 'string') {
@@ -53,7 +53,7 @@ function ServerMethods() {
     }
     additionalHeaders.forEach(function(additionalHeader) {
       var header = additionalHeader.split(':');
-      if (VALID_HEADERS.indexOf(header[0]) != -1) {
+      if (VALID_HEADERS.indexOf(header[0].toLowerCase()) != -1) {
         aRes.setHeader(header[0], header[1]);
       }
     });
