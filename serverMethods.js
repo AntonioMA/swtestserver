@@ -52,9 +52,11 @@ function ServerMethods() {
       additionalHeaders = [additionalHeaders];
     }
     additionalHeaders.forEach(function(additionalHeader) {
-      var header = additionalHeader.split(':');
-      if (VALID_HEADERS.indexOf(header[0].toLowerCase()) != -1) {
-        aRes.setHeader(header[0], header[1]);
+      var separator = additionalHeader.indexOf(':');
+      var header = additionalHeader.slice(0, separator);
+      var value = additionalHeader.slice(separator + 1);
+      if (VALID_HEADERS.indexOf(header.toLowerCase()) != -1) {
+        aRes.setHeader(header, value);
       }
     });
   }
