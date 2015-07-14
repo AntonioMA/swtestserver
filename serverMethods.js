@@ -45,7 +45,7 @@ function ServerMethods() {
 
   var VALID_HEADERS = [
       'content-security-policy',
-      'content-security-policy-report-rnly'
+      'content-security-policy-report-only'
   ];
   function addHeaders(aRes, additionalHeaders) {
     if (typeof additionalHeaders === 'string') {
