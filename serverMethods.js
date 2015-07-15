@@ -75,7 +75,7 @@ function ServerMethods() {
     }).catch(function(error) {
       debug("Error reading file: " + realFile + ". ERR: " +
             JSON.stringify(error));
-      goAway(404, aReq, aRes, aParsedURL.pathname);
+      goAway(404, aReq, aRes, aParsedURL);
     });
   }
 

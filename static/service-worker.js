@@ -19,7 +19,6 @@ self.addEventListener('activate', function(e) {
 var cli;
 
 self.addEventListener('fetch', function(event) {
-  debug("Fetch event for asdasdasd");
   debug('Fetch event for: ' + event.request.url);
   if (event.request.url.contains('test.xml')) {
     debug("Fetch event for asdasdasdi intercept");
@@ -44,8 +43,23 @@ self.addEventListener('fetch', function(event) {
     //event.respondWith(fetch('http://www.w3schools.com/xml/note.xml', {mode: 'cors'})); // PARSE ERROR
     //event.respondWith(fetch('http://www.w3schools.com/xml/note.xml', {mode: 'same-origin'})); // PARSE ERROR
     //event.respondWith(fetch('http://www.w3schools.com/xml/note.xml', {mode: 'cors-with-forced-preflight'})); // PARSE ERROR
+  } else if (event.request.method === 'POST' && event.request.url.contains('cspReport')) {
+    // does this even work?
+    debug("Hello worlding this");
+    event.respondWith(new Promise((resolve, reject) => {
+      event.request.json().then(reportData => {
+        debug("Report Data: " + reportData + " TXT: " + JSON.stringify(reportData));
+        var loadedURI = reportData['csp-report'] && reportData['csp-report']['blocked-uri'];
+        var h = new Headers();
+        h.append("Location", loadedURI);
+        resolve(new Response("some text", {status: 302, headers: h}));
+//        fetch(loadedURI, {mode: 'no-cors'}).then(response => {
+//          // This isn't really used but...
+//          resolve(response);
+//      });
+      });
+    }));
   }
-//  event.respondWith(new Response("Hello world!"));
 
 
 //  var result = xmlDoc.load('http://www.w3schools.com/xml/note.xml');
