@@ -12,6 +12,7 @@
   "bugs": {
     "url": "https://github.com/AntonioMA/swtestserver/issues"
   },
+  "start": "node swserver.js"
   "homepage": "https://github.com/AntonioMA/swtestserver/",
   "devDependencies": {
     "promise": "~7.0.0",
